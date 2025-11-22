@@ -1,4 +1,4 @@
-# 🛡️ SYSTEM DIRECTIVE FOR RELIABLE SOFTWARE & WORKFLOW
+# 🛡️ AGENTS.md — SYSTEM DIRECTIVE FOR RELIABLE SOFTWARE & WORKFLOW
 
 > **PRIME DIRECTIVE**  
 > **CRASH EARLY, CRASH LOUDLY.**  
@@ -7,18 +7,6 @@
 
 This document is the **single source of truth** for coding standards, debugging, workflow and decision‑making.  
 Deviations are treated as **critical failures**.
-
----
-
-## 0. HOW TO USE THIS DOCUMENT
-
-- This file is a **system prompt** for AI agents.
-- All original **25 rules** are preserved and grouped into logical **Pillars**.
-- Each pillar lists **which original rules it implements**.
-- Section [📎 Appendix A. Original 25 Rules](#-appendix-a-original-25-rules-canonical-wording) keeps the canonical wording.
-- Section [📚 Rule ↔ Section Cross‑Reference](#-rule--section-cross-reference) shows where each rule lives in the new structure.
-
-When in doubt, follow the **stricter** interpretation.
 
 ---
 
@@ -45,8 +33,6 @@ When in doubt, follow the **stricter** interpretation.
 ---
 
 ## PILLAR A — ERROR HANDLING & STRICT NO‑FALLBACK
-
-> Covers original rules **#1, #2, #5, #6, #7, #13, #20, #22, #25**
 
 ### A.1 Core Principles of No‑Fallback
 
@@ -144,9 +130,6 @@ if (!isSane(result)) {
 
 ## PILLAR B — DATA, ARCHITECTURE & TYPE SAFETY
 
-> Covers original rules **#3, #4, #9, #10, #17, #20, #21, #23, #24**
-> Plus extended principles: **type safety, single source of truth, immutability, idempotency, structured logging.**
-
 ### B.1 Data Is More Valuable Than Code (Rule #9)
 
 - Lost data **cannot** be recovered; code can always be rewritten.
@@ -181,6 +164,7 @@ if (!isSane(result)) {
 - If the language supports types (TypeScript, Python hints, etc.), use them strictly.
 - `any` (or its equivalent) is treated as a **silent error** in the type system.
 - Express invariants in the type system whenever possible so invalid states are **unrepresentable**.
+- !DO NOT USE TYPE SAFETY IN JAVASCRIPT PROJECTS!
 
 ### B.7 Immutability & Side Effect
 
@@ -206,8 +190,6 @@ if (!isSane(result)) {
 ---
 
 ## PILLAR C — WORKFLOW & MINDSET
-
-> Covers original rules **#3, #4, #11, #12, #13, #14, #15, #16, #17, #18, #19, #22**
 
 ### C.1 Automate Repetition, Never Misunderstanding (Rule #3)
 
@@ -269,8 +251,6 @@ if (!isSane(result)) {
 
 ## PILLAR D — ROOT CAUSE ANALYSIS & NO BAND‑AIDS
 
-> Covers original rules **#2, #5, #7, #13, #20, #21, #22, #25**
-
 ### D.1 Root‑Cause‑or‑Nothing Policy (Rule #25)
 
 We **fix causes**, not symptoms. Any band‑aid that lets the system limp forward is prohibited.
@@ -329,13 +309,9 @@ Use this template in PR descriptions for all non‑trivial fixes:
 
 <what makes this state impossible or immediately visible>
 
-### Tests
-
-<new failing test before, passing after; coverage notes>
-
 ### Prevention
 
-<guards, constraints, monitors, alerts>
+<guards, constraints>
 
 ### Rollout & Reversion
 
@@ -431,10 +407,7 @@ Reject a change if **any** of these fail:
 
 ---
 
-## 📎 APPENDIX A. ORIGINAL 25 RULES (CANONICAL WORDING)
-
-This section keeps the original principles in concise form.
-Each line also points to the main pillar/section implementing it.
+## 📎 APPENDIX A. (CANONICAL WORDING)
 
 1. **Strict No‑Fallback Policy** — all errors must surface explicitly; never masked or bypassed.
    _See: Pillar A_
@@ -515,7 +488,7 @@ Each line also points to the main pillar/section implementing it.
 
 ## 📚 RULE ↔ SECTION CROSS‑REFERENCE
 
-Quick map for navigation (non‑exhaustive):
+Quick map for navigation:
 
 - **Rule #1** → [Pillar A — Error Handling & Strict No‑Fallback](#pillar-a--error-handling--strict-no-fallback)
 - **Rule #2** → [Pillar A](#pillar-a--error-handling--strict-no-fallback), [Pillar D](#pillar-d--root-cause-analysis--no-band-aids)
