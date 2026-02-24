@@ -8,7 +8,10 @@
 
 - Track (internally) the exact docs you consulted for THIS task (Preflight); output only if the user asks.
 - Documentation sync is mandatory: any change that affects behavior/contracts/project reality must be reconciled with the relevant CURRENT docs under `docs/` in the same change.
-- This applies to all doc layers, not just code/architecture.
+- This applies to all doc layers, not just code/architecture:
+- Architecture & code: `docs/architecture/system-overview.md` (and its "Related docs"), `docs/ARCHITECTURE.md`, `docs/architecture/adr/DECISIONS.md`
+- Navigation: `docs/INDEX.md`
+- `docs/rd/**` and `docs/_archive/**` are research/history: DO NOT touch these folders.
 
 Command safety (mandatory): never run any lint/build command (e.g. `npm run lint`, `npm run build`, `next build`, `eslint`, etc.) without explicit user confirmation in the current conversation.
 
